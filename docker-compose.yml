@@ -1,0 +1,10 @@
+version: '2.3'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  php:
+      image: php:7.2-fpm-stretch
+      volumes:
+          - .:/code
