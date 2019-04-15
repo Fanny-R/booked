@@ -20,3 +20,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    environment:
+      DATABASE_URL: mysql://booked:booked@db:3306/booked
