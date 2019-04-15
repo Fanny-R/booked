@@ -17,6 +17,6 @@ services:
     volumes:
       - ./db:/var/lib/mysql:rw
   php:
-    image: php:7.2-fpm-stretch
-    volumes:
-      - .:/code
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
