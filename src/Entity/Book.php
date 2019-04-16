@@ -42,8 +42,7 @@ class Book
     private $isShortStory;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Format")
-     * @ORM\JoinColumn(name="format_id", referencedColumnName="id", nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $format;
 
@@ -102,12 +101,12 @@ class Book
         $this->isShortStory = $isShortStory;
     }
 
-    public function getFormat(): ?Format
+    public function getFormat(): ?string
     {
         return $this->format;
     }
 
-    public function setFormat(Format $format)
+    public function setFormat(string $format)
     {
         $this->format = $format;
     }
