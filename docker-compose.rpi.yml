@@ -1,0 +1,5 @@
+version: '2.3'
+services:
+  db:
+    image: hypriot/rpi-mysql
+    command: ~
