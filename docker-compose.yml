@@ -11,9 +11,16 @@ services:
     image: mysql:8.0
     ports:
       - 3306:3306
+    command: ["--default-authentication-plugin=mysql_native_password"]
     environment:
       MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/var/lib/mysql:rw
   php:
-    image: php:7.2-fpm-stretch
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      DATABASE_URL: mysql://booked:booked@db:3306/booked
     volumes:
       - .:/code

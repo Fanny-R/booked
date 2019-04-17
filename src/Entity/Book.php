@@ -91,4 +91,24 @@ class Book
     {
         $this->yearOfPublication = $yearOfPublication;
     }
+
+    public function isShortStory(): ?bool
+    {
+        return $this->isShortStory;
+    }
+
+    public function setIsShortStory(bool $isShortStory)
+    {
+        $this->isShortStory = $isShortStory;
+    }
+
+    public function getFormat(): ?Format
+    {
+        return $this->format;
+    }
+
+    public function setFormat(Format $format)
+    {
+        $this->format = $format;
+    }
 }
