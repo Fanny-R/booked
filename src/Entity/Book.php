@@ -73,32 +73,32 @@ class Book
         $this->title = $title;
     }
 
-    public function getPurchaseDate(): ?\DateTimeInterface
+    public function getPurchaseDate(): ?DateTimeInterface
     {
         return $this->purchaseDate;
     }
 
-    public function setPurchaseDate(?\DateTimeInterface $purchaseDate)
+    public function setPurchaseDate(?DateTimeInterface $purchaseDate)
     {
         $this->purchaseDate = $purchaseDate;
     }
 
-    public function getReadingDate(): ?\DateTimeInterface
+    public function getReadingDate(): ?DateTimeInterface
     {
         return $this->readingDate;
     }
 
-    public function setReadingDate(?\DateTimeInterface $readingDate)
+    public function setReadingDate(?DateTimeInterface $readingDate)
     {
         $this->readingDate = $readingDate;
     }
 
-    public function getYearOfPublication(): ?\DateTimeInterface
+    public function getYearOfPublication(): ?DateTimeInterface
     {
         return $this->yearOfPublication;
     }
 
-    public function setYearOfPublication(?\DateTimeInterface $yearOfPublication)
+    public function setYearOfPublication(?DateTimeInterface $yearOfPublication)
     {
         $this->yearOfPublication = $yearOfPublication;
     }
