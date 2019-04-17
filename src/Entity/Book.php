@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,6 +22,11 @@ class Book
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -45,6 +52,11 @@ class Book
      * @ORM\Column(type="string", length=255)
      */
     private $format;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -109,5 +121,10 @@ class Book
     public function setFormat(string $format)
     {
         $this->format = $format;
+    }
+
+    public function getCreatedAt(): ?DateTimeInterface
+    {
+        return $this->createdAt;
     }
 }
