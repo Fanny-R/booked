@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -53,9 +54,19 @@ class Book
      */
     private $format;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Author", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\JoinTable(name="books_authors",
+     *      joinColumns={@ORM\JoinColumn(name="book_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="author_id", referencedColumnName="id")}
+     * )
+     */
+    private $authors;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
+        $this->authors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -126,5 +137,25 @@ class Book
     public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
+    }
+
+    public function getAuthors(): ArrayCollection
+    {
+        return $this->authors;
+    }
+
+    public function setAuthors($authors): array
+    {
+        $this->authors = $authors;
+    }
+
+    public function addAuthor(Author $author)
+    {
+        $this->authors[] = $author;
+    }
+
+    public function removeAuthor(Author $author)
+    {
+        $this->authors->removeElement($author);
     }
 }
