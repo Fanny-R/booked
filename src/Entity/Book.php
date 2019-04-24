@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,6 +22,11 @@ class Book
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -42,10 +49,14 @@ class Book
     private $isShortStory;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Format")
-     * @ORM\JoinColumn(name="format_id", referencedColumnName="id", nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $format;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -62,32 +73,32 @@ class Book
         $this->title = $title;
     }
 
-    public function getPurchaseDate(): ?\DateTimeInterface
+    public function getPurchaseDate(): ?DateTimeInterface
     {
         return $this->purchaseDate;
     }
 
-    public function setPurchaseDate(?\DateTimeInterface $purchaseDate)
+    public function setPurchaseDate(?DateTimeInterface $purchaseDate)
     {
         $this->purchaseDate = $purchaseDate;
     }
 
-    public function getReadingDate(): ?\DateTimeInterface
+    public function getReadingDate(): ?DateTimeInterface
     {
         return $this->readingDate;
     }
 
-    public function setReadingDate(?\DateTimeInterface $readingDate)
+    public function setReadingDate(?DateTimeInterface $readingDate)
     {
         $this->readingDate = $readingDate;
     }
 
-    public function getYearOfPublication(): ?\DateTimeInterface
+    public function getYearOfPublication(): ?DateTimeInterface
     {
         return $this->yearOfPublication;
     }
 
-    public function setYearOfPublication(?\DateTimeInterface $yearOfPublication)
+    public function setYearOfPublication(?DateTimeInterface $yearOfPublication)
     {
         $this->yearOfPublication = $yearOfPublication;
     }
@@ -102,13 +113,18 @@ class Book
         $this->isShortStory = $isShortStory;
     }
 
-    public function getFormat(): ?Format
+    public function getFormat(): ?string
     {
         return $this->format;
     }
 
-    public function setFormat(Format $format)
+    public function setFormat(string $format)
     {
         $this->format = $format;
+    }
+
+    public function getCreatedAt(): ?DateTimeInterface
+    {
+        return $this->createdAt;
     }
 }
