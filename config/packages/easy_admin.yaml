@@ -4,6 +4,15 @@ easy_admin:
   entities:
     Book:
       class: App\Entity\Book
+      list:
+        fields:
+          - title
+          - createdAt
+          - purchaseDate
+          - readingDate
+          - { property: 'yearOfPublication', format: 'Y' }
+          - format
+          - { property: 'isShortStory', type: 'boolean' }
       form:
         fields:
           - title
