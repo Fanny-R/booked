@@ -1,4 +1,6 @@
 easy_admin:
+  formats:
+    datetime:     'd/m/Y'
   entities:
     Book:
       class: App\Entity\Book
