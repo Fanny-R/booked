@@ -5,6 +5,7 @@ namespace App\Entity;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -139,12 +140,12 @@ class Book
         return $this->createdAt;
     }
 
-    public function getAuthors(): ArrayCollection
+    public function getAuthors(): Collection
     {
         return $this->authors;
     }
 
-    public function setAuthors($authors): array
+    public function setAuthors($authors): Collection
     {
         $this->authors = $authors;
     }
