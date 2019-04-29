@@ -1,3 +1,13 @@
 easy_admin:
    entities:
-       - App\Entity\Book
+      Book:
+        class: App\Entity\Book
+        form:
+          fields:
+            - title
+            - authors
+            - purchaseDate
+            - readingDate
+            - yearOfPublication
+            - { property: 'format', type: 'choice', type_options: {choices: {'Paper book': 'paper-book', 'Ebook': 'ebook', 'Audiobook': 'audiobook'}}}
+            - isShortStory
