@@ -65,4 +65,19 @@ class Author
     {
         $this->miscellaneousLetters = $miscellaneousLetters;
     }
+
+    public function __toString(): string
+    {
+        $name = '';
+
+        if ($this->firstName) {
+            $name = $name . $this->firstName . ' ';
+        }
+
+        if ($this->miscellaneousLetters) {
+            $name = $name . $this->miscellaneousLetters . ' ';
+        }
+
+        return $name . $this->getSurname();
+    }
 }
